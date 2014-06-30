@@ -12,7 +12,11 @@ require(data.table)
 setwd("WIDA_CO")
 
 ###  Format ACCESS Data as provided by Marie
-WIDA_CO_Data_LONG <- data.table(read.csv(file= 'Data/Base_Files/ACCESS_Data_LONG.csv', stringsAsFactors=FALSE))
+WIDA_CO_Data_LONG <- data.table(read.csv(file= 'Data/Base_Files/ACCESS_Data_LONG_2014_06_02_2014.csv', stringsAsFactors=FALSE))
+
+###  Only include CELA data from 2011-13.  Only 3 priors per Marie 6/2/14 phone call.
+###  Control through SGPstateData - SGP_Configuration instead of subsetting data - per Damian 6/3/14
+# WIDA_CO_Data_LONG <- WIDA_CO_Data_LONG[YEAR %in% 2011:2014]
 
 #  Make all content area "READING" to conform with other WIDA state members
 WIDA_CO_Data_LONG[, CONTENT_AREA := "READING"]
@@ -33,23 +37,20 @@ WIDA_CO_SGP <- abcSGP(
 	sgp.projections.lagged.baseline = FALSE,
 	sgp.target.scale.scores=TRUE,
 	simulate.sgps=FALSE,
-	save.intermediate.results=TRUE,
-	sgPlot.demo.report=TRUE,
 	outputSGP.output.type=c("LONG_Data", "LONG_FINAL_YEAR_Data"),
 	parallel.config=list(BACKEND="PARALLEL", 
-		WORKERS=list(PERCENTILES=4, PROJECTIONS=4, LAGGED_PROJECTIONS=4, SGP_SCALE_SCORE_TARGETS=4, SUMMARY=4)))
+		WORKERS=list(PERCENTILES=12, PROJECTIONS=12, LAGGED_PROJECTIONS=12, SGP_SCALE_SCORE_TARGETS=12, SUMMARY=12)))
 
 ### Save results
 
 save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
 
-###  Produce sample reports ("boiler plate" reports from the SGP package)
+###  Produce Individual Student Reports
 
 visualizeSGP(
 	WIDA_CO_SGP,# state="WIDA_CO",
 	plot.types="studentGrowthPlot",
 	sgPlot.years='2014',
-	sgPlot.save.sgPlot.data=TRUE,
 	sgPlot.year.span=2,
-	sgPlot.demo.report=TRUE
+	# sgPlot.demo.report=TRUE # Use this argument to produce sample catalogue only
 )

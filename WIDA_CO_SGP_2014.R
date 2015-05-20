@@ -26,6 +26,8 @@ WIDA_CO_Data_LONG[, ACHIEVEMENT_LEVEL := gsub("CELA ", "", WIDA_CO_Data_LONG$ACH
 WIDA_CO_Data_LONG[, ACHIEVEMENT_LEVEL := gsub("ACCESS ", "", WIDA_CO_Data_LONG$ACHIEVEMENT_LEVEL)]
 WIDA_CO_Data_LONG[, ACHIEVEMENT_LEVEL := ordered(ACHIEVEMENT_LEVEL, labels=c('L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'NO SCORE'))]
 
+# WIDA_CO_SGP@Data[which(GRADE=="K"), GRADE := "0"]
+
 ###  Run abcSGP to produce 2014 percentiles and projections
 
 WIDA_CO_SGP <- abcSGP(
@@ -52,5 +54,5 @@ visualizeSGP(
 	plot.types="studentGrowthPlot",
 	sgPlot.years='2014',
 	sgPlot.year.span=2,
-	# sgPlot.demo.report=TRUE # Use this argument to produce sample catalogue only
+	sgPlot.demo.report=TRUE # Use this argument to produce sample catalogue only
 )

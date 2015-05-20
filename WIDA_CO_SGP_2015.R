@@ -39,6 +39,6 @@ visualizeSGP(
 	WIDA_CO_SGP,# state="WIDA_CO",
 	plot.types="studentGrowthPlot",
 	sgPlot.years='2015',
-	sgPlot.year.span=3,
-#	sgPlot.demo.report=TRUE,
+	sgPlot.year.span=2,
+	sgPlot.demo.report=TRUE,
 	parallel.config=list(BACKEND="PARALLEL", WORKERS=list(SG_PLOTS=23)))

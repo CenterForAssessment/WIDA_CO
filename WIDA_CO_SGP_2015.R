@@ -41,4 +41,4 @@ visualizeSGP(
 	sgPlot.years='2015',
 	sgPlot.year.span=3,
 	sgPlot.demo.report=TRUE,
-	parallel.config=list(BACKEND="PARALLEL", WORKERS=list(SG_PLOTS=23)))
+	parallel.config=list(BACKEND="PARALLEL", WORKERS=list(SG_PLOTS=12)))

@@ -18,7 +18,7 @@ load("Data/WIDA_CO_Data_LONG.Rdata")
 
 WIDA_CO_SGP <- abcSGP(
 		WIDA_CO_Data_LONG,
-		steps=c("prepareSGP", "analyzeSGP", "combineSGP", "outputSGP"),
+		steps=c("prepareSGP", "analyzeSGP", "combineSGP", "visualizeSGP", "outputSGP"),
 		sgp.percentiles=TRUE,
 		sgp.projections=TRUE,
 		sgp.projections.lagged=TRUE,
@@ -28,6 +28,7 @@ WIDA_CO_SGP <- abcSGP(
 		sgp.percentiles.equated=FALSE,
 		sgp.target.scale.scores=TRUE,
 		save.intermediate.results=TRUE,
+		sgPlot.demo.report=TRUE,
 		parallel.config=list(BACKEND="PARALLEL", WORKERS=list(PERCENTILES=4, PROJECTIONS=4, LAGGED_PROJECTIONS=4, SGP_SCALE_SCORE_TARGETS=4)))
 
 

@@ -18,7 +18,7 @@ load("Data/WIDA_CO_Data_LONG.Rdata")
 
 WIDA_CO_SGP <- abcSGP(
 		WIDA_CO_Data_LONG,
-		steps=c("prepareSGP", "analyzeSGP", "combineSGP", "visualizeSGP", "outputSGP"),
+		steps=c("prepareSGP", "analyzeSGP", "combineSGP", "summarizeSGP", "visualizeSGP", "outputSGP"),
 		sgp.percentiles=TRUE,
 		sgp.projections=TRUE,
 		sgp.projections.lagged=TRUE,

@@ -1,0 +1,752 @@
+
+Started abcSGP Tuesday September 19 16:11:45 2017
+
+
+	abcSGP(
+		 sgp_object = WIDA_CO_Data_LONG
+		steps = c("prepareSGP", "analyzeSGP", "combineSGP", "summarizeSGP", "visualizeSGP", "outputSGP")
+		sgp.percentiles = TRUE
+		sgp.projections = TRUE
+		sgp.projections.lagged = TRUE
+		sgp.percentiles.baseline = FALSE
+		sgp.projections.baseline = FALSE
+		sgp.projections.lagged.baseline = FALSE
+		sgp.target.scale.scores = TRUE
+		parallel.config = list(BACKEND = "PARALLEL", WORKERS = list(PERCENTILES = 4, PROJECTIONS = 4, LAGGED_PROJECTIONS = 4, SGP_SCALE_SCORE_TARGETS = 4))
+		save.intermediate.results = TRUE
+		sgPlot.demo.report = TRUE
+		sgp.percentiles.equated = FALSE )
+
+
+Started prepareSGP Tuesday September 19 16:11:45 2017
+
+
+	prepareSGP(
+		 data = sgp_object
+		data_supplementary = data_supplementary
+		state = state
+		var.names = prepareSGP.var.names
+		create.additional.variables = prepareSGP.create.additional.variables
+		fix.duplicates = fix.duplicates )
+
+Finished prepareSGP Tuesday September 19 16:11:46 2017 in 1.195 Seconds 
+
+	CSEMs are required in SGPstateData to simulate SGPs for confidence interval calculations. Confidence intervals will not be calculated.
+	NOTE: Only two years of data present. Minimum default of 3 years of panel data for SGP analyses changed to 2. Please confirm this is consistent with analyses you wish to perform.
+
+Started analyzeSGP Tuesday September 19 16:11:51 2017
+
+
+	analyzeSGP(
+		 sgp_object = sgp_object
+		state = state
+		years = years
+		content_areas = content_areas
+		grades = grades
+		sgp.percentiles = sgp.percentiles
+		sgp.projections = sgp.projections
+		sgp.projections.lagged = sgp.projections.lagged
+		sgp.percentiles.baseline = sgp.percentiles.baseline
+		sgp.projections.baseline = sgp.projections.baseline
+		sgp.projections.lagged.baseline = sgp.projections.lagged.baseline
+		sgp.minimum.default.panel.years = sgp.minimum.default.panel.years
+		sgp.use.my.coefficient.matrices = sgp.use.my.coefficient.matrices
+		sgp.test.cohort.size = sgp.test.cohort.size
+		return.sgp.test.results = return.sgp.test.results
+		simulate.sgps = simulate.sgps
+		calculate.simex = calculate.simex
+		calculate.simex.baseline = calculate.simex.baseline
+		goodness.of.fit.print = goodness.of.fit.print
+		sgp.config = sgp.config
+		parallel.config = parallel.config
+		verbose.output = verbose.output
+		get.cohort.data.info = get.cohort.data.info
+		sgp.sqlite = sgp.sqlite
+		sgp.percentiles.equated = sgp.percentiles.equated
+		sgp.percentiles.equating.method = sgp.percentiles.equating.method
+		sgp.percentiles.calculate.sgps = sgp.percentiles.calculate.sgps
+		SGPt = SGPt
+		fix.duplicates = fix.duplicates )
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:52 2017
+		Content Area: READING, Year: 2017, Grade Progression: 11, 12  (N=1,599)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:11:53 2017 in 1.345 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:52 2017
+		Content Area: READING, Year: 2017, Grade Progression: 10, 11  (N=2,563)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:11:54 2017 in 2.164 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:52 2017
+		Content Area: READING, Year: 2017, Grade Progression: 9, 10  (N=3,548)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:11:55 2017 in 3.083 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:52 2017
+		Content Area: READING, Year: 2017, Grade Progression: 8, 9  (N=5,539)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:11:58 2017 in 5.736 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:53 2017
+		Content Area: READING, Year: 2017, Grade Progression: 7, 8  (N=5,667)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:00 2017 in 6.258 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:54 2017
+		Content Area: READING, Year: 2017, Grade Progression: 6, 7  (N=5,645)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:00 2017 in 6.07 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:55 2017
+		Content Area: READING, Year: 2017, Grade Progression: 5, 6  (N=5,716)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:02 2017 in 6.396 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:11:58 2017
+		Content Area: READING, Year: 2017, Grade Progression: 4, 5  (N=7,311)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:08 2017 in 10.5 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:00 2017
+		Content Area: READING, Year: 2017, Grade Progression: 3, 4  (N=8,602)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:14 2017 in 13.9 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:14 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 11, 12  (N=1,599)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:15 2017 in 1.663 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:15 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 10, 11  (N=2,563)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:18 2017 in 2.641 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:00 2017
+		Content Area: READING, Year: 2017, Grade Progression: 2, 3  (N=10,756)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:20 2017 in 19.8 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:02 2017
+		Content Area: READING, Year: 2017, Grade Progression: 1, 2  (N=10,636)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:21 2017 in 19 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:18 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 9, 10  (N=3,548)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:22 2017 in 3.661 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:08 2017
+		Content Area: READING, Year: 2017, Grade Progression: 0, 1  (N=9,751)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:24 2017 in 15.8 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:20 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 8, 9  (N=5,540)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:27 2017 in 6.908 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:21 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 7, 8  (N=5,667)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:28 2017 in 7.094 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:22 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 6, 7  (N=5,645)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:29 2017 in 6.835 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:24 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 5, 6  (N=5,716)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:31 2017 in 6.378 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:27 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 4, 5  (N=7,313)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:37 2017 in 9.655 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:28 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 3, 4  (N=8,602)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:40 2017 in 12.4 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:29 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 2, 3  (N=10,804)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:46 2017 in 17.4 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:31 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 1, 2  (N=10,686)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:47 2017 in 16.1 Seconds
+
+	Started studentGrowthPercentiles: Tuesday September 19 16:12:37 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 0, 1  (N=9,838)
+	Finished studentGrowthPercentiles: Tuesday September 19 16:12:49 2017 in 11.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:12:49 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 0  (N=10,808)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:06 2017 in 16.5 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:12:49 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 1  (N=11,263)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:07 2017 in 17.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:12:49 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 2  (N=11,985)
+	Started studentGrowthProjections: Tuesday September 19 16:12:49 2017
+	Finished studentGrowthProjections: Tuesday September 19 16:13:07 2017 in 17.8 Seconds
+
+		Content Area: LITERACY, Year: 2017, Grade Progression: 3  (N=11,855)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:07 2017 in 17.8 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:07 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 6  (N=6,686)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:18 2017 in 11.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:07 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 7  (N=6,681)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:18 2017 in 11.2 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:07 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 5  (N=8,269)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:21 2017 in 13.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:06 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 4  (N=9,613)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:21 2017 in 15.5 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:22 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 11  (N=3,502)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:25 2017 in 3.216 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:21 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 10  (N=4,676)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:26 2017 in 5.557 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:18 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 8  (N=6,591)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:29 2017 in 10.6 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:19 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 9  (N=7,041)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:30 2017 in 11.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:25 2017
+		Content Area: READING, Year: 2017, Grade Progression: 0  (N=10,808)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:40 2017 in 15.6 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:27 2017
+		Content Area: READING, Year: 2017, Grade Progression: 1  (N=11,156)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:43 2017 in 16.3 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:29 2017
+		Content Area: READING, Year: 2017, Grade Progression: 2  (N=11,920)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:46 2017 in 17.2 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:30 2017
+		Content Area: READING, Year: 2017, Grade Progression: 3  (N=11,803)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:47 2017 in 17 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:41 2017
+		Content Area: READING, Year: 2017, Grade Progression: 4  (N=9,613)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:55 2017 in 14.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:43 2017
+		Content Area: READING, Year: 2017, Grade Progression: 5  (N=8,267)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:56 2017 in 13.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:47 2017
+		Content Area: READING, Year: 2017, Grade Progression: 6  (N=6,686)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:57 2017 in 10.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:47 2017
+		Content Area: READING, Year: 2017, Grade Progression: 7  (N=6,681)
+	Finished studentGrowthProjections: Tuesday September 19 16:13:58 2017 in 10.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:58 2017
+		Content Area: READING, Year: 2017, Grade Progression: 11  (N=3,502)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:01 2017 in 2.994 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:57 2017
+		Content Area: READING, Year: 2017, Grade Progression: 10  (N=4,676)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:02 2017 in 5.188 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:55 2017
+		Content Area: READING, Year: 2017, Grade Progression: 8  (N=6,591)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:04 2017 in 8.63 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:13:56 2017
+		Content Area: READING, Year: 2017, Grade Progression: 9  (N=7,040)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:05 2017 in 8.614 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:05 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 3 LAGGED (N=8,602)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:39 2017 in 33.7 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:05 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 2 LAGGED (N=10,804)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:54 2017 in 48.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:05 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 1 LAGGED (N=10,686)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:57 2017 in 51.8 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:05 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 0 LAGGED (N=9,838)
+	Finished studentGrowthProjections: Tuesday September 19 16:14:58 2017 in 52.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:39 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 4 LAGGED (N=7,313)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:09 2017 in 29.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:54 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 5 LAGGED (N=5,716)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:12 2017 in 18.4 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:59 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 7 LAGGED (N=5,667)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:13 2017 in 14.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:14:57 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 6 LAGGED (N=5,645)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:14 2017 in 16.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:14 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 11 LAGGED (N=1,599)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:16 2017 in 2.372 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:13 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 10 LAGGED (N=2,563)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:17 2017 in 3.923 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:12 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 9 LAGGED (N=3,548)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:20 2017 in 7.195 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:09 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 8 LAGGED (N=5,540)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:21 2017 in 12.6 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:22 2017
+		Content Area: READING, Year: 2017, Grade Progression: 3 LAGGED (N=8,602)
+	Finished studentGrowthProjections: Tuesday September 19 16:15:59 2017 in 37.2 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:20 2017
+		Content Area: READING, Year: 2017, Grade Progression: 2 LAGGED (N=10,756)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:07 2017 in 47.5 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:17 2017
+		Content Area: READING, Year: 2017, Grade Progression: 1 LAGGED (N=10,636)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:08 2017 in 50.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:16 2017
+		Content Area: READING, Year: 2017, Grade Progression: 0 LAGGED (N=9,751)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:08 2017 in 51.6 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:09 2017
+		Content Area: READING, Year: 2017, Grade Progression: 7 LAGGED (N=5,667)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:25 2017 in 16.3 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:08 2017
+		Content Area: READING, Year: 2017, Grade Progression: 6 LAGGED (N=5,645)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:26 2017 in 18.3 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:15:59 2017
+		Content Area: READING, Year: 2017, Grade Progression: 4 LAGGED (N=7,311)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:26 2017 in 27.3 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:07 2017
+		Content Area: READING, Year: 2017, Grade Progression: 5 LAGGED (N=5,716)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:30 2017 in 22.5 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:26 2017
+		Content Area: READING, Year: 2017, Grade Progression: 10 LAGGED (N=2,563)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:30 2017 in 3.951 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:30 2017
+		Content Area: READING, Year: 2017, Grade Progression: 11 LAGGED (N=1,599)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:32 2017 in 1.728 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:26 2017
+		Content Area: READING, Year: 2017, Grade Progression: 9 LAGGED (N=3,548)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:34 2017 in 7.954 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:16:25 2017
+		Content Area: READING, Year: 2017, Grade Progression: 8 LAGGED (N=5,539)
+	Finished studentGrowthProjections: Tuesday September 19 16:16:37 2017 in 12.1 Seconds
+
+Finished analyzeSGP Tuesday September 19 16:16:46 2017 in 4 Minutes, 55 Seconds 
+
+Started combineSGP Tuesday September 19 16:16:57 2017
+	Started studentGrowthProjections: Tuesday September 19 16:17:02 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 1 TARGET_SCALE_SCORES (N=11,263)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:13 2017 in 11.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:02 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 0 TARGET_SCALE_SCORES (N=10,808)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:13 2017 in 11.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:02 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 3 TARGET_SCALE_SCORES (N=11,855)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:14 2017 in 12.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:02 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 2 TARGET_SCALE_SCORES (N=11,985)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:15 2017 in 12.8 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:14 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 5 TARGET_SCALE_SCORES (N=8,269)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:26 2017 in 12.8 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:15 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 6 TARGET_SCALE_SCORES (N=6,686)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:26 2017 in 11.8 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:15 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 7 TARGET_SCALE_SCORES (N=6,681)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:27 2017 in 12.2 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:13 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 4 TARGET_SCALE_SCORES (N=9,613)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:28 2017 in 15 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:28 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 10 TARGET_SCALE_SCORES (N=4,676)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:32 2017 in 4.663 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:26 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 8 TARGET_SCALE_SCORES (N=6,591)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:34 2017 in 7.729 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:26 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 9 TARGET_SCALE_SCORES (N=7,041)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:35 2017 in 8.027 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:36 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 3 LAGGED.TARGET_SCALE_SCORES (N=8,602)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:50 2017 in 13.7 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:36 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 0 LAGGED.TARGET_SCALE_SCORES (N=9,838)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:53 2017 in 17.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:36 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 1 LAGGED.TARGET_SCALE_SCORES (N=10,686)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:54 2017 in 18.5 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:36 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 2 LAGGED.TARGET_SCALE_SCORES (N=10,804)
+	Finished studentGrowthProjections: Tuesday September 19 16:17:55 2017 in 18.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:50 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 4 LAGGED.TARGET_SCALE_SCORES (N=7,313)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:03 2017 in 13 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:53 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 5 LAGGED.TARGET_SCALE_SCORES (N=5,716)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:03 2017 in 9.902 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:54 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 6 LAGGED.TARGET_SCALE_SCORES (N=5,645)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:03 2017 in 8.848 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:17:55 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 7 LAGGED.TARGET_SCALE_SCORES (N=5,667)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:04 2017 in 8.736 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:04 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 11 LAGGED.TARGET_SCALE_SCORES (N=1,599)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:05 2017 in 1.05 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:03 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 10 LAGGED.TARGET_SCALE_SCORES (N=2,563)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:06 2017 in 2.122 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:03 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 9 LAGGED.TARGET_SCALE_SCORES (N=3,548)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:07 2017 in 4.386 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:03 2017
+		Content Area: LITERACY, Year: 2017, Grade Progression: 8 LAGGED.TARGET_SCALE_SCORES (N=5,540)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:09 2017 in 6.711 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:10 2017
+		Content Area: READING, Year: 2017, Grade Progression: 1 TARGET_SCALE_SCORES (N=11,156)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:24 2017 in 14.1 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:10 2017
+		Content Area: READING, Year: 2017, Grade Progression: 0 TARGET_SCALE_SCORES (N=10,808)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:24 2017 in 14.2 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:10 2017
+		Content Area: READING, Year: 2017, Grade Progression: 3 TARGET_SCALE_SCORES (N=11,803)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:26 2017 in 15.3 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:10 2017
+		Content Area: READING, Year: 2017, Grade Progression: 2 TARGET_SCALE_SCORES (N=11,920)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:26 2017 in 15.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:26 2017
+		Content Area: READING, Year: 2017, Grade Progression: 6 TARGET_SCALE_SCORES (N=6,686)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:33 2017 in 7.158 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:25 2017
+		Content Area: READING, Year: 2017, Grade Progression: 5 TARGET_SCALE_SCORES (N=8,267)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:33 2017 in 8.614 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:26 2017
+		Content Area: READING, Year: 2017, Grade Progression: 7 TARGET_SCALE_SCORES (N=6,681)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:33 2017 in 7.239 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:24 2017
+		Content Area: READING, Year: 2017, Grade Progression: 4 TARGET_SCALE_SCORES (N=9,613)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:35 2017 in 10.3 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:34 2017
+		Content Area: READING, Year: 2017, Grade Progression: 10 TARGET_SCALE_SCORES (N=4,676)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:38 2017 in 3.945 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:33 2017
+		Content Area: READING, Year: 2017, Grade Progression: 8 TARGET_SCALE_SCORES (N=6,591)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:39 2017 in 6.404 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:33 2017
+		Content Area: READING, Year: 2017, Grade Progression: 9 TARGET_SCALE_SCORES (N=7,040)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:40 2017 in 6.534 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:41 2017
+		Content Area: READING, Year: 2017, Grade Progression: 3 LAGGED.TARGET_SCALE_SCORES (N=8,602)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:53 2017 in 12.7 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:41 2017
+		Content Area: READING, Year: 2017, Grade Progression: 0 LAGGED.TARGET_SCALE_SCORES (N=9,751)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:54 2017 in 13.6 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:41 2017
+		Content Area: READING, Year: 2017, Grade Progression: 1 LAGGED.TARGET_SCALE_SCORES (N=10,636)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:56 2017 in 14.9 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:41 2017
+		Content Area: READING, Year: 2017, Grade Progression: 2 LAGGED.TARGET_SCALE_SCORES (N=10,756)
+	Finished studentGrowthProjections: Tuesday September 19 16:18:56 2017 in 15.2 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:54 2017
+		Content Area: READING, Year: 2017, Grade Progression: 5 LAGGED.TARGET_SCALE_SCORES (N=5,716)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:02 2017 in 8.102 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:56 2017
+		Content Area: READING, Year: 2017, Grade Progression: 6 LAGGED.TARGET_SCALE_SCORES (N=5,645)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:04 2017 in 8.096 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:54 2017
+		Content Area: READING, Year: 2017, Grade Progression: 4 LAGGED.TARGET_SCALE_SCORES (N=7,311)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:04 2017 in 10.5 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:18:56 2017
+		Content Area: READING, Year: 2017, Grade Progression: 7 LAGGED.TARGET_SCALE_SCORES (N=5,667)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:04 2017 in 8.254 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:19:04 2017
+		Content Area: READING, Year: 2017, Grade Progression: 11 LAGGED.TARGET_SCALE_SCORES (N=1,599)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:05 2017 in 0.964 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:19:04 2017
+		Content Area: READING, Year: 2017, Grade Progression: 10 LAGGED.TARGET_SCALE_SCORES (N=2,563)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:06 2017 in 2.013 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:19:04 2017
+		Content Area: READING, Year: 2017, Grade Progression: 9 LAGGED.TARGET_SCALE_SCORES (N=3,548)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:08 2017 in 4.087 Seconds
+
+	Started studentGrowthProjections: Tuesday September 19 16:19:03 2017
+		Content Area: READING, Year: 2017, Grade Progression: 8 LAGGED.TARGET_SCALE_SCORES (N=5,539)
+	Finished studentGrowthProjections: Tuesday September 19 16:19:09 2017 in 6.725 Seconds
+
+Finished combineSGP Tuesday September 19 16:19:09 2017 in 2 Minutes, 13 Seconds 
+
+
+Started summarizeSGP Tuesday September 19 16:19:22 2017
+
+
+	summarizeSGP(
+		 sgp_object = sgp_object
+		state = state
+		years = years
+		content_areas = content_areas
+		sgp.summaries = sgp.summaries
+		summary.groups = summary.groups
+		confidence.interval.groups = confidence.interval.groups
+		save.old.summaries = save.old.summaries
+		parallel.config = parallel.config )
+
+	Finished with STATE, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, GENDER, STATE_ENROLLMENT_STATUS
+	Finished with STATE, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, ETHNICITY, STATE_ENROLLMENT_STATUS
+	Finished with STATE, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, FREE_REDUCED_LUNCH_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, ELL_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, IEP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, CATCH_UP_KEEP_UP_STATUS, STATE_ENROLLMENT_STATUS
+	Finished with STATE, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, GRADE, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, GRADE, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, YEAR, GRADE, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with STATE, CONTENT_AREA, YEAR, GRADE, ACHIEVEMENT_LEVEL_PRIOR, STATE_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, GENDER, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, ETHNICITY, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, FREE_REDUCED_LUNCH_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, ELL_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, IEP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, YEAR, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, YEAR, GRADE, GIFTED_TALENTED_PROGRAM_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CATCH_UP_KEEP_UP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CATCH_UP_KEEP_UP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, CONTENT_AREA, CATCH_UP_KEEP_UP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, CONTENT_AREA, CATCH_UP_KEEP_UP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, YEAR, CATCH_UP_KEEP_UP_STATUS, SCHOOL_ENROLLMENT_STATUS
+	Finished with SCHOOL_NUMBER, EMH_LEVEL, YEAR, CATCH_UP_KEEP_UP_STATUS, SCHOOL_ENROLLMENT_STATUS

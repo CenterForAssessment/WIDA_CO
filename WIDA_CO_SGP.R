@@ -35,3 +35,13 @@ WIDA_CO_SGP <- abcSGP(
 ### Save results
 
 save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
+
+
+visualizeSGP(
+		WIDA_CO_SGP,
+		plot.types="studentGrowthPlot",
+		sgPlot.years='2017',
+		sgPlot.content_areas="READING",
+		sgPlot.year.span=3,
+		sgPlot.demo.report=TRUE,
+		parallel.config=list(BACKEND="PARALLEL", WORKERS=list(SG_PLOTS=12)))

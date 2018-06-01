@@ -7,21 +7,19 @@
 ### Load SGP package
 
 require(SGP)
-
+require(data.table)
 
 ### Load Data
 
-load("Data/WIDA_CO_SGP.Rdata")
+load("Data/WIDA_CO_Data_LONG.Rdata")
 load("Data/WIDA_CO_Data_LONG_2018.Rdata")
 
-# WIDA_CO_SGP@Data <- WIDA_CO_SGP@Data[CONTENT_AREA == "READING"]
+WIDA_CO_Data_LONG <- rbindlist(list(WIDA_CO_Data_LONG[YEAR == "2017" & CONTENT_AREA == "READING"], WIDA_CO_Data_LONG_2018), fill = TRUE)
 
 ### Run analyses
 
-WIDA_CO_SGP <- updateSGP(
-		what_sgp_object = WIDA_CO_SGP,
-		with_sgp_data_LONG = WIDA_CO_Data_LONG_2018,
-		content_areas="READING",
+WIDA_CO_SGP <- abcSGP(
+		WIDA_CO_Data_LONG,
 		steps=c("prepareSGP", "analyzeSGP", "combineSGP", "summarizeSGP", "outputSGP"),
 		sgp.percentiles=TRUE,
 		sgp.projections=TRUE,

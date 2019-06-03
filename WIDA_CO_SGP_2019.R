@@ -1,6 +1,6 @@
 ##########################################################################################
 ###
-### Script for calculating SGPs for 2017-2018 for WIDA-ACCESS
+### Script for calculating SGPs for 2018-2019 for WIDA-ACCESS
 ###
 ##########################################################################################
 
@@ -11,10 +11,10 @@ require(data.table)
 
 ### Load Data
 
-load("Data/WIDA_CO_Data_LONG.Rdata")
-load("Data/WIDA_CO_Data_LONG_2018.Rdata")
+load("Data/WIDA_CO_SGP_LONG_Data.Rdata")
+load("Data/WIDA_CO_Data_LONG_2019.Rdata")
 
-WIDA_CO_Data_LONG <- rbindlist(list(WIDA_CO_Data_LONG[YEAR == "2017" & CONTENT_AREA == "READING"], WIDA_CO_Data_LONG_2018), fill = TRUE)
+WIDA_CO_Data_LONG <- rbindlist(list(WIDA_CO_SGP_LONG_Data[YEAR %in% c("2017", "2018") & CONTENT_AREA == "READING"], WIDA_CO_Data_LONG_2019), fill = TRUE)
 
 ### Run analyses
 
@@ -51,7 +51,7 @@ save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
 visualizeSGP(
 		WIDA_CO_SGP,
 		plot.types="studentGrowthPlot",
-		sgPlot.years='2018',
+		sgPlot.years='2019',
 		sgPlot.content_areas="READING",
 		# sgPlot.year.span=3, # Now in SGPstateData
 		sgPlot.demo.report=TRUE,

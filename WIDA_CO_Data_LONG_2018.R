@@ -13,8 +13,8 @@ require(SGP)
 ### Load data
 tmp.dir <- getwd()
 setwd(tempdir())
-system(paste0("unzip '", file.path(tmp.dir, "Data/Base_Files/ACCESS18_SGP_LongFile_Readin.zip"), "'"))
-WIDA_CO_Data_LONG_2018 <- fread("ACCESS18_SGP_LongFile_Readin.csv", colClasses=rep("character", 23))
+system(paste0("unzip '", file.path(tmp.dir, "Data/Base_Files/ACCESS18_SGP_LongFile_Readin_06.08.18.zip"), "'"))
+WIDA_CO_Data_LONG_2018 <- fread("ACCESS18_SGP_LongFile_Readin_06.08.18.csv", colClasses=rep("character", 23))
 unlink("ACCESS18_SGP_LongFile_Readin.csv")
 setwd(tmp.dir)
 
@@ -29,6 +29,8 @@ levels(WIDA_CO_Data_LONG_2018$LAST_NAME) <- sapply(levels(WIDA_CO_Data_LONG_2018
 WIDA_CO_Data_LONG_2018[, SCALE_SCORE := as.numeric(SCALE_SCORE)]
 
 # WIDA_CO_Data_LONG_2018[ACHIEVEMENT_LEVEL == "", ACHIEVEMENT_LEVEL := NA] # table(WIDA_CO_Data_LONG_2018[, is.na(SCALE_SCORE), ACHIEVEMENT_LEVEL])
+# tbl <- WIDA_CO_Data_LONG_2018[CONTENT_AREA=="READING" & !is.na(SCALE_SCORE), as.list(summary(SCALE_SCORE)), keyby=c("ACHIEVEMENT_LEVEL", "GRADE")]
+# setkey(tbl, GRADE);tbl
 WIDA_CO_Data_LONG_2018[, ACHIEVEMENT_LEVEL := as.factor(ACHIEVEMENT_LEVEL)]
 levels(WIDA_CO_Data_LONG_2018$ACHIEVEMENT_LEVEL) <- c("NO SCORE", "L1", "L2", "L3", "L4", "L5", "L6")
 
@@ -51,7 +53,6 @@ WIDA_CO_Data_LONG_2018[, IEP_STATUS := as.factor(IEP_STATUS)]
 
 WIDA_CO_Data_LONG_2018[GIFTED_TALENTED_PROGRAM_STATUS == "MISSING", GIFTED_TALENTED_PROGRAM_STATUS := NA]
 WIDA_CO_Data_LONG_2018[, GIFTED_TALENTED_PROGRAM_STATUS := as.factor(GIFTED_TALENTED_PROGRAM_STATUS)]
-
 
 WIDA_CO_Data_LONG_2018[, SCHOOL_NAME := as.factor(SCHOOL_NAME)]
 levels(WIDA_CO_Data_LONG_2018$SCHOOL_NAME) <- sapply(levels(WIDA_CO_Data_LONG_2018$SCHOOL_NAME), capwords)

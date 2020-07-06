@@ -240,14 +240,14 @@ head(tmp_data[VALID_CASE=="VALID_CASE" & YEAR=="2020" & AYFEP_PRIOR==3 & AYFEP =
 
 assign("WIDA_CO_SGP_LONG_Data", tmp_data)
 save(WIDA_CO_SGP_LONG_Data, file="Data/WIDA_CO_SGP_LONG_Data_w_OTG.Rdata")
-WIDA_CO_SGP_LONG_Data[, ISR_INTERIM_DATA := NULL]
-fwrite(WIDA_CO_SGP_LONG_Data, file="Data/WIDA_CO_SGP_LONG_Data_w_OTG.txt", sep="|")
 
 WIDA_CO_SGP@Data <- tmp_data
 setkeyv(WIDA_CO_SGP@Data, SGP:::getKey(WIDA_CO_SGP@Data))
 
 save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
 
+WIDA_CO_SGP_LONG_Data[, ISR_INTERIM_DATA := NULL]
+fwrite(WIDA_CO_SGP_LONG_Data, file="Data/WIDA_CO_SGP_LONG_Data_w_OTG.txt", sep="|")
 
 
 #####

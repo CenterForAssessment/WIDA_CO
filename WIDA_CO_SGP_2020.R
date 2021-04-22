@@ -137,14 +137,110 @@ setnames(WIDA_CO_SGP@Data, "CUKU_ORIG", "CATCH_UP_KEEP_UP_STATUS")
 save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
 
 
+######
+###
+###   Create Individual Student Reports
+###
+######
 
-###   Create Student Reports
+require(data.table)
+
+###   Clean up SCHOOL_NAME and DISTRICT_NAME
+###   Check levels first to confirm special.words - Clean Well for ISRs
+
+#   Schools
+grep("Ece", levels(WIDA_CO_SGP@Data$SCHOOL_NAME), value=T)
+
+new.sch.levs <- toupper(levels(WIDA_CO_SGP@Data$SCHOOL_NAME))
+new.sch.levs <- gsub("/", " / ", new.sch.levs)
+
+new.sch.levs <- sapply(new.sch.levs, SGP::capwords, special.words = c('AIM', 'APS', 'AXIS', 'AXL', 'CCH', 'CEC', 'CMS', 'COVA', 'CUBE', 'DC', 'DCIS', 'DSST', 'DSST:', 'ECE-8', 'GES', 'GOAL', 'GVR', 'IB', 'KIPP', 'PK', 'PK-8', 'PK-12', 'PSD', 'LEAP', 'MHCD', 'MS', 'SHS', 'STEM', 'TCA', 'VSSA'), USE.NAMES=FALSE)
+new.sch.levs <- gsub(" / ", "/", new.sch.levs)
+new.sch.levs <- gsub("[']S", "'s", new.sch.levs)
+new.sch.levs <- gsub("Prek", "PreK", new.sch.levs)
+
+sort(grep("Mc", new.sch.levs, value=T))
+new.sch.levs <- gsub("Mc Auliffe", "McAuliffe", new.sch.levs)
+new.sch.levs <- gsub("Mcauliffe", "McAuliffe", new.sch.levs)
+new.sch.levs <- gsub("Mc Clave", "McClave", new.sch.levs)
+new.sch.levs <- gsub("Mcclave", "McClave", new.sch.levs)
+new.sch.levs <- gsub("Mc Elwain", "McElwain", new.sch.levs)
+new.sch.levs <- gsub("Mcelwain", "McElwain", new.sch.levs)
+new.sch.levs <- gsub("Mc Ginnis", "McGinnis", new.sch.levs)
+new.sch.levs <- gsub("Mcginnis", "McGinnis", new.sch.levs)
+new.sch.levs <- gsub("Mc Glone", "McGlone", new.sch.levs)
+new.sch.levs <- gsub("Mcglone", "McGlone", new.sch.levs)
+new.sch.levs <- gsub("Mc Graw", "McGraw", new.sch.levs)
+new.sch.levs <- gsub("Mcgraw", "McGraw", new.sch.levs)
+new.sch.levs <- gsub("Mc Kinley", "McKinley", new.sch.levs)
+new.sch.levs <- gsub("Mckinley", "McKinley", new.sch.levs)
+new.sch.levs <- gsub("Mc Lain", "McLain", new.sch.levs)
+new.sch.levs <- gsub("Mclain", "McLain", new.sch.levs)
+new.sch.levs <- gsub("Mc Meen", "McMeen", new.sch.levs)
+new.sch.levs <- gsub("Mcmeen", "McMeen", new.sch.levs)
+sort(grep("Mc", new.sch.levs, value=T))
+
+new.sch.levs <- gsub("Achieve Online", "ACHIEVE Online", new.sch.levs)
+new.sch.levs <- gsub("Hope Online", "HOPE Online", new.sch.levs)
+new.sch.levs <- gsub("Reach Charter", "REACH Charter", new.sch.levs)
+new.sch.levs <- gsub("Soar A", "SOAR A", new.sch.levs)
+new.sch.levs <- gsub("Strive Prep", "STRIVE Prep", new.sch.levs)
+new.sch.levs <- gsub("Edcsd", "eDCSD", new.sch.levs)
+
+setattr(WIDA_CO_SGP@Data$SCHOOL_NAME, "levels", new.sch.levs)
+
+
+###   Districts
+
+WIDA_CO_SGP@Data[, DISTRICT_NAME := as.factor(DISTRICT_NAME)]
+grep("J", levels(WIDA_CO_SGP@Data$DISTRICT_NAME), value=T)
+new.dst.levs <- toupper(levels(WIDA_CO_SGP@Data$DISTRICT_NAME))
+new.dst.levs <- gsub("/", " / ", new.dst.levs)
+new.dst.levs <- gsub("[-]", " - ", new.dst.levs)
+
+new.dst.levs <- sapply(new.dst.levs, SGP::capwords, special.words = c('1J', '2J', '3J', '4J', '5J', '6J', '10J', '10JT', '13JT', '11J', '22J', '27J', '28J', '29J', '31J', '33J', '50J', '50JT', '60JT', '100J', 'JT', '32J', 'RJ', '26J', '49JT', '4A', 'RD', 'RE', 'RE1J'), USE.NAMES=FALSE)
+new.dst.levs <- gsub(" / ", "/", new.dst.levs)
+new.dst.levs <- gsub(" - ", "-", new.dst.levs)
+new.dst.levs <- gsub("Mc Clave", "McClave", new.dst.levs)
+new.dst.levs <- gsub("Mcclave", "McClave", new.dst.levs)
+grep("Mc", new.dst.levs, value=T) # Should only leave * Conejos
+grep("j", new.dst.levs, value=T) # Should only leave * Conejos
+
+setattr(WIDA_CO_SGP@Data$DISTRICT_NAME, "levels", new.dst.levs)
+
+
+###
+###   Produce ISRs using visualizeSGP function
+###
 
 visualizeSGP(
 		WIDA_CO_SGP,
 		plot.types="studentGrowthPlot",
 		sgPlot.years='2020',
 		sgPlot.content_areas="READING",
-		# sgPlot.year.span=3, # Now in SGPstateData
 		# sgPlot.demo.report=TRUE,
 		parallel.config=list(BACKEND="PARALLEL", WORKERS=list(SG_PLOTS=20)))
+
+
+###
+###   Post-Hoc checks for missing schools/districs
+###
+
+dist <- system("ls /home/ec2-user/ACCESS_2020_ISRs/Visualizations/studentGrowthPlots/School/2020", intern=TRUE)
+dat.dist <- unique(WIDA_CO_SGP@Data[YEAR=='2020' & !is.na(SGP)]$DISTRICT_NUMBER)
+miss <- setdiff(as.numeric(dat.dist), as.numeric(dist))
+m <- WIDA_CO_SGP@Data[!is.na(SGP) & as.numeric(DISTRICT_NUMBER) %in% miss]
+table(m[, GRADE, CONTENT_AREA]) #  0
+
+problem.districts <- list()
+for (d in as.numeric(dist)) {
+	data.schools <- unique(WIDA_CO_SGP@Data[as.numeric(DISTRICT_NUMBER) == d, as.numeric(SCHOOL_NUMBER)])
+	file.schools <- system(paste0("ls /home/ec2-user/ACCESS_2020_ISRs/Visualizations/studentGrowthPlots/School/2020/", d), intern=TRUE)
+	file.schools <- gsub("[.]zip", "", file.schools)
+	if (!(all(file.schools %in% data.schools) | all(data.schools %in% file.schools))) {
+		missing.schools <- setdiff(data.schools, file.schools)
+		problem.districts[[d]] <- missing.schools
+	}
+}
+
+#  No Problem Schools within Districts :-)

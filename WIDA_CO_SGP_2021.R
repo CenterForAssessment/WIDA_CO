@@ -134,7 +134,7 @@ WIDA_CO_SGP <- updateSGP(
 
 ###   Save results
 
-#save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
+save(WIDA_CO_SGP, file="Data/WIDA_CO_SGP.Rdata")
 
 
 ######

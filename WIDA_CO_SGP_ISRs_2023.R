@@ -20,10 +20,11 @@ grep("Ece", levels(WIDA_CO_SGP@Data$SCHOOL_NAME), value = T)
 new.sch.levs <- toupper(levels(WIDA_CO_SGP@Data$SCHOOL_NAME))
 new.sch.levs <- gsub("/", " / ", new.sch.levs)
 
-sch.specials <- c("AIM", "APS", "AUL", "AXIS", "AXL", "CCH", "CEC", "CIVICA",
-                  "CMS", "COVA", "CUBE", "DC", "DCIS", "DSST", "DSST:", "ECE-8",
-                  "GES", "GOAL", "GVR", "IB", "KIPP", "PK", "PK-8", "PK-12",
-                  "PSD", "LEAP", "MHCD", "MS", "SHS", "STEM", "TCA", "VSSA")
+sch.specials <-
+  c("AIM", "APS", "AUL", "AXIS", "AXL", "CCH", "CEC", "CIVICA",
+    "CMS", "COVA", "CUBE", "DC", "DCIS", "DSST", "DSST:", "ECE-8",
+    "GES", "GOAL", "GVR", "IB", "KIPP", "PK", "PK-8", "PK-12",
+    "PSD", "LEAP", "MHCD", "MS", "SHS", "STEM", "TCA", "VSSA")
 
 new.sch.levs <- sapply(X = new.sch.levs, USE.NAMES = FALSE,
                        FUN = SGP::capwords, special.words = sch.specials)
@@ -89,10 +90,11 @@ new.dst.levs <- toupper(levels(WIDA_CO_SGP@Data$DISTRICT_NAME))
 new.dst.levs <- gsub("/", " / ", new.dst.levs)
 new.dst.levs <- gsub("[-]", " - ", new.dst.levs)
 
-dst.specials <- c("1J", "2J", "3J", "4J", "5J", "6J", "10J", "10JT",
-                  "13JT", "11J", "22J", "27J", "28J", "29J", "31J",
-                  "33J", "50J", "50JT", "60JT", "100J", "JT", "32J",
-                  "RJ", "26J", "49JT", "4A", "RD", "RE", "RE1J")
+dst.specials <-
+    c("1J", "2J", "3J", "4A", "4J", "5J", "6J", "10J", "10JT",
+      "11J", "13JT", "22J", "26J", "27J", "28J", "29J", "31J",
+      "32J", "33J", "49JT", "50J", "50JT", "60JT", "100J",
+      "JT", "RJ", "RD", "RE", "RE1J")
 
 new.dst.levs <- sapply(new.dst.levs, SGP::capwords,
                        special.words = dst.specials, USE.NAMES = FALSE)
@@ -127,10 +129,10 @@ visualizeSGP(
     WIDA_CO_SGP,
     plot.types = "studentGrowthPlot",
     sgPlot.years = "2023",
-    sgPlot.demo.report = TRUE,
+    # sgPlot.demo.report = TRUE,
     parallel.config = list(
         BACKEND = "PARALLEL",
-        WORKERS = list(SG_PLOTS = 15)
+        WORKERS = list(SG_PLOTS = 18)
     )
 )
 
@@ -139,11 +141,16 @@ visualizeSGP(
 ###   Post-Hoc checks for missing schools/districs
 #####
 
-# dist <- system("ls /home/ubuntu/ISR/Visualizations/studentGrowthPlots/School/2023", intern = TRUE)
+# dist <-
+#   system(
+#     "ls /home/ubuntu/SGP/CO_ISRs_2023/Visualizations/studentGrowthPlots/School/2023",
+#     intern = TRUE
+#   )
 # dat.dist <- unique(WIDA_CO_SGP@Data[YEAR == "2023" & !is.na(SGP)]$DISTRICT_NUMBER)
 # miss <- setdiff(dat.dist, dist)
 # m <- WIDA_CO_SGP@Data[!is.na(SGP) & DISTRICT_NUMBER %in% miss]
 # table(m[, GRADE, CONTENT_AREA]) #  0
+# ###   No missing districts :-)
 
 # problem.districts <- list()
 # for (d in dat.dist) {
@@ -151,7 +158,7 @@ visualizeSGP(
 #      unique(WIDA_CO_SGP@Data[YEAR == "2023" & !is.na(SGP) & DISTRICT_NUMBER == d, SCHOOL_NUMBER])
 #    file.schools <-
 #      system(
-#             paste0("ls /home/ubuntu/ISR/Visualizations/studentGrowthPlots/School/2023/", d),
+#             paste0("ls /home/ubuntu/SGP/CO_ISRs_2023/Visualizations/studentGrowthPlots/School/2023/", d),
 #             intern = TRUE)
 #    file.schools <- gsub("[.]zip", "", file.schools)
 #    if (!(all(file.schools %in% data.schools) || all(data.schools %in% file.schools))) {
@@ -161,5 +168,4 @@ visualizeSGP(
 # }
 
 # problem.districts[lengths(problem.districts) != 0]
-
 ###   No Problem Schools within Districts :-)

@@ -21,7 +21,7 @@ setnames(WIDA_CO_SGP@Data,
 
 
 ###   Add baseline matrices
-SGPstateData <- SGPmatrices::addBaselineMatrices("WIDA_CO", "2022")
+SGPstateData <- SGPmatrices::addBaselineMatrices("WIDA_CO", "2021")
 
 ###   Run updateSGP to produce cohort referrenced SGPs, etc.
 WIDA_CO_SGP <-

@@ -9,7 +9,7 @@ require(SGP)
 require(data.table)
 
 ###   Load 2024 Data
-load("Data/WIDA_CO_SGP.Rdata")
+# load("Data/WIDA_CO_SGP.Rdata")
 
 ###   Clean up SCHOOL_NAME and DISTRICT_NAME
 ##    Check levels first to confirm special.words - Clean Well for ISRs
@@ -143,7 +143,7 @@ visualizeSGP(
 
 # dist <-
 #   system(
-#     "ls /home/ubuntu/SGP/CO_ISRs_2024/Visualizations/studentGrowthPlots/School/2024",
+#     "ls /home/ubuntu/CO_ISRs_2024/Visualizations/studentGrowthPlots/School/2024",
 #     intern = TRUE
 #   )
 # dat.dist <- unique(WIDA_CO_SGP@Data[YEAR == "2024" & !is.na(SGP)]$DISTRICT_NUMBER)
@@ -158,7 +158,7 @@ visualizeSGP(
 #      unique(WIDA_CO_SGP@Data[YEAR == "2024" & !is.na(SGP) & DISTRICT_NUMBER == d, SCHOOL_NUMBER])
 #    file.schools <-
 #      system(
-#             paste0("ls /home/ubuntu/SGP/CO_ISRs_2024/Visualizations/studentGrowthPlots/School/2024/", d),
+#             paste0("ls /home/ubuntu/CO_ISRs_2024/Visualizations/studentGrowthPlots/School/2024/", d),
 #             intern = TRUE)
 #    file.schools <- gsub("[.]zip", "", file.schools)
 #    if (!(all(file.schools %in% data.schools) || all(data.schools %in% file.schools))) {
@@ -168,4 +168,4 @@ visualizeSGP(
 # }
 
 # problem.districts[lengths(problem.districts) != 0]
-###   No Problem Schools within Districts :-)
+# ###   No Problem Schools within Districts :-)

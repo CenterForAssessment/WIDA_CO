@@ -1,9 +1,34 @@
+#+ include = FALSE, purl = FALSE
 ###############################################################################
 ###                                                                         ###
 ###        Data prep and cleaning for Colorado WIDA/ACCESS  -  2024         ###
 ###                                                                         ###
 ###############################################################################
 
+#' ## Data Preparation
+#'
+#' The data preparation step involves taking data provided by the CDE and
+#' producing a `.Rdata` file that will subsequently be analyzed using the `SGP`
+#' software. This process is carried out annually as new data becomes available
+#' from the Colorado ACCESS for ELLs assessment program.
+#'
+#' The data received from CDE is pre-processed and requires minimal formatting
+#' prior to running SGP analyses. For the 2024 ACCESS data preparation and
+#' cleaning, we ensure that all data fields have been read in as the correct
+#' type (e.g., scale scores are `numeric` values) and format demographic and
+#' student information to match values used in the historical data set. All
+#' variable names were confirmed to conform to the `SGP` required package
+#' conventions.
+#'
+#' Invalid records were identified based on the following criteria:
+#'
+#' * Students with duplicate records. In these instances, a student's highest
+#'   scale score is retained as the "valid" case in the analyses.
+#' * Cases with missing student identifiers.
+#' * Cases with missing scale scores.
+
+
+#+ include = FALSE, purl = FALSE, eval = FALSE
 ###   Load packages
 require(data.table)
 
@@ -78,7 +103,8 @@ WIDA_CO_Data_LONG_2024[,
 table(WIDA_CO_Data_LONG_2024[, VALID_CASE])
 setkey(WIDA_CO_Data_LONG_2024,
        VALID_CASE, CONTENT_AREA, YEAR, GRADE, ID, SCALE_SCORE)
-setkey(WIDA_CO_Data_LONG_2024, VALID_CASE, CONTENT_AREA, YEAR, GRADE, ID)
+setkey(WIDA_CO_Data_LONG_2024,
+       VALID_CASE, CONTENT_AREA, YEAR, GRADE, ID)
 WIDA_CO_Data_LONG_2024[
     which(duplicated(WIDA_CO_Data_LONG_2024, by = key(WIDA_CO_Data_LONG_2024)))-1,
     VALID_CASE := "INVALID_CASE"]

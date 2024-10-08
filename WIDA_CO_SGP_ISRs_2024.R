@@ -3,13 +3,32 @@
 ###     Create 2024 Individual Student Reports for Colorado WIDA/ACCESS     ###
 ###                                                                         ###
 ###############################################################################
+# ssh -i "CO_ISRs_2022.pem" ubuntu@34.239.111.219
+
+# sudo mkfs -t ext4 /dev/nvme1n1
+# sudo mount /dev/nvme1n1 CO_ISRs_2024
+# sudo chown -R ubuntu:users /home/ubuntu/CO_ISRs_2024
+# mkdir CO_ISRs_2024/Data
+# scp -P 22 -i "CO_ISRs_2022.pem" '/Users/avi/SGP Dropbox/Adam Van Iwaarden/SGP/ACCESS/Data/WIDA_CO_SGP.Rdata' \
+#     ubuntu@34.239.111.219:/home/ubuntu/CO_ISRs_2024/Data
+
+# scp -P 22 -i "CO_ISRs_2022.pem" ubuntu@34.239.111.219:/home/ubuntu/CO_ISRs_2024/Visualizations/studentGrowthPlots/School/2024/Sample_District/Sample_School.zip \
+#     '/Users/avi/Data/WIDA_CO/Visualizations/studentGrowthPlots/School/2024/'
+
+# sudo umount /dev/nvme1n1
 
 ###   Load required packages
 require(SGP)
 require(data.table)
 
 ###   Load 2024 Data
-# load("Data/WIDA_CO_SGP.Rdata")
+load("Data/WIDA_CO_SGP.Rdata")
+
+###   Modify data for ISR production
+WIDA_CO_SGP@Data <-
+    WIDA_CO_SGP@Data[
+        VALID_CASE == "VALID_CASE" &
+        YEAR >= 2022, ]
 
 ###   Clean up SCHOOL_NAME and DISTRICT_NAME
 ##    Check levels first to confirm special.words - Clean Well for ISRs
@@ -78,7 +97,6 @@ new.sch.levs <- gsub("''", "'", new.sch.levs)
 
 new.sch.levs <- gsub("ADAMS12", "Adams 12", new.sch.levs)
 
-
 setattr(WIDA_CO_SGP@Data$SCHOOL_NAME, "levels", new.sch.levs)
 
 
@@ -125,14 +143,16 @@ setattr(WIDA_CO_SGP@Data$DISTRICT_NAME, "levels", new.dst.levs)
 SGPstateData[["WIDA_CO_SPANISH"]][["SGP_Configuration"]][["sgPlot.sgp.targets"]] <-
   SGPstateData[["WIDA_CO"]][["SGP_Configuration"]][["sgPlot.sgp.targets"]] <- NULL
 
+gc()
+
 visualizeSGP(
     WIDA_CO_SGP,
     plot.types = "studentGrowthPlot",
     sgPlot.years = "2024",
-    sgPlot.demo.report = TRUE,
+    # sgPlot.demo.report = TRUE,
     parallel.config = list(
         BACKEND = "PARALLEL",
-        WORKERS = list(SG_PLOTS = 10)
+        WORKERS = list(SG_PLOTS = 15) # m7a.4Xlarge
     )
 )
 

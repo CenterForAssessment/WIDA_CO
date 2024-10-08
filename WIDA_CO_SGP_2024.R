@@ -1,8 +1,9 @@
-################################################################################
-###                                                                          ###
-###    Calculate 2024 Student Growth Percentiles for Colorado WIDA/ACCESS    ###
-###                                                                          ###
-################################################################################
+#+ include = FALSE, purl = FALSE, eval = FALSE
+###############################################################################
+###                                                                         ###
+###   Calculate 2024 Student Growth Percentiles for Colorado WIDA/ACCESS    ###
+##                                                                          ###
+###############################################################################
 
 ###   Load required packages
 require(SGP)
@@ -12,7 +13,13 @@ require(data.table)
 load("Data/WIDA_CO_SGP.Rdata")
 load("Data/WIDA_CO_Data_LONG_2024.Rdata")
 
-###   Preserve basic CU/KU variables from previous analyses
+##    Fix 2022 data! -- Didn't find this until tech report
+WIDA_CO_SGP@Data[
+    YEAR == 2022, 
+    SCALE_SCORE_PRIOR_STANDARDIZED := SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE
+]
+
+##    Preserve basic CU/KU variables from previous analyses
 setnames(WIDA_CO_SGP@Data,
          c("CATCH_UP_KEEP_UP_STATUS_3_YEAR",
            "CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR",
@@ -49,6 +56,15 @@ WIDA_CO_SGP <-
         )
     )
 
+
+###   Output/Save Results
+outputSGP(WIDA_CO_SGP)
+
+
+######
+###    On-Track to Standard growth trajectories/targets calculation
+######
+
 ###   Move CUPKUP to "ORIG" vars
 ##    (only current year gets merged due to @SGP$SGProjections renaming (?))
 # table(WIDA_CO_SGP@Data[, is.na(CATCH_UP_KEEP_UP_STATUS_3_YEAR), YEAR], exclude = NULL)
@@ -65,7 +81,7 @@ WIDA_CO_SGP@Data[
 ][, CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR := NULL
 ]
 
-###  Run combineSGP for Interim Target Levels (for both 2022 and 2024)
+###  Run combineSGP for Interim Target Levels (for both 2023 and 2024)
 `%w/o%` <- function(x, y) x[!x %in% y]
 
 ##    Preserve previously calculated "interim" variables
@@ -280,6 +296,59 @@ setnames(WIDA_CO_SGP@Data,
            "CATCH_UP_KEEP_UP_INTERIM_STATUS")
 )
 
+#' ### Conduct SGP analyses
+#'
+#' Although Colorado currently uses cohort-referenced SGPs as the official
+#' student-level English language proficiency growth metric, baseline-referenced
+#' SGPs were also calculated. All SGPs were calculated concurrently using the
+#' [`R` Software Environment](http://www.r-project.org) in conjunction with the
+#' [`SGP` package](http://sgp.io). Broadly, the Colorado ACCESS for ELLs
+#' analyses were completed in five steps.
+#'
+#' 1. `prepareSGP`
+#' 2. `analyzeSGP`
+#' 3. `combineSGP`
+#' 4. `outputSGP`
+#' 5. `visualizeSGP`
+#' 
+#' Because these steps are almost always conducted simultaneously, the `SGP`
+#' package has "wrapper" functions, `abcSGP` and `updateSGP`, that combine
+#' the above steps into a single function call and simplify the source code
+#' associated with the data analysis. Documentation for all SGP functions are
+#' [available online.](https://cran.r-project.org/web/packages/SGP/SGP.pdf)
+#' 
+#' We use the [`updateSGP`](https://www.rdocumentation.org/packages/SGP/versions/2.0-1.0/topics/updateSGP)
+#' function to ***a)*** do the final preparation and addition of the cleaned and
+#' formatted new annual data,
+#' ([`prepareSGP`](https://www.rdocumentation.org/packages/SGP/versions/2.0-1.0/topics/prepareSGP)
+#' step), ***b)*** calculate SGP estimates
+#' ([`analyzeSGP`](https://www.rdocumentation.org/packages/SGP/versions/2.0-1.0/topics/analyzeSGP)
+#' step), ***c)*** merge the results into the master longitudinal data set
+#' ([`combineSGP`](https://www.rdocumentation.org/packages/SGP/versions/2.0-1.0/topics/combineSGP)
+#' step) and ***d)*** output a pipe delimited version of the complete long data
+#' ([`outputSGP`](https://www.rdocumentation.org/packages/SGP/versions/2.0-1.0/topics/outputSGP)
+#' step).
+#' 
+#' #### Visualize results
+#' 
+#' Once all analyses were completed via `updateSGP`, individual student growth
+#' and English language proficiency reports were produced using the
+#' [`visualizeSGP`](https://www.rdocumentation.org/packages/SGP/versions/2.0-1.0/topics/visualizeSGP)
+#' function and a custom template designed for Colorado. English and Spanish
+#' language versions of these reports were created, and individual reports and
+#' school level catalogs were bundled according to CDE specifications.
+#'
+#' #### Custom *On-Track to Standard* growth
+#' 
+#' The 2024 Colorado ACCESS for ELLs SGP results data were used in subsequent
+#' growth to standard and adequate growth analyses. As part of these analyses,
+#' The Center for Assessment calculated additional growth trajectory and target
+#' metrics that CDE requires to monitor "On-Track to Standard" status given each
+#' student's prior proficiency level and the number of years they have to attain
+#' or maintain a particular level of proficiency. Further information on these
+#' individualized requirements can be found on
+#' the [CDE website](https://www.cde.state.co.us/accountability/access-on-track-growth).
+
 
 #+ include = FALSE, purl = FALSE, eval = FALSE
 ###   Add R session Info & Save results (`cfaDocs` version 0.0-1.12 or later)
@@ -290,10 +359,7 @@ source(
     )
 )
 WIDA_CO_SGP@Version$session_platform <- list("2024" = session_platform)
-WIDA_CO_SGP@Version$attached_pkgs <- list("2024" = attached_pkgs)
-WIDA_CO_SGP@Version$namespace_pkgs<-  list("2024" = namespace_pkgs)
-
-###   Output/Save Results
-outputSGP(WIDA_CO_SGP)
+WIDA_CO_SGP@Version$attached_pkgs    <- list("2024" = attached_pkgs)
+WIDA_CO_SGP@Version$namespace_pkgs   <- list("2024" = namespace_pkgs)
 
 save(WIDA_CO_SGP, file = "Data/WIDA_CO_SGP.Rdata")

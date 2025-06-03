@@ -1,7 +1,7 @@
 #+ include = FALSE, purl = FALSE, eval = FALSE
 ###############################################################################
 ###                                                                         ###
-###   Calculate 2024 Student Growth Percentiles for Colorado WIDA/ACCESS    ###
+###   Calculate 2025 Student Growth Percentiles for Colorado WIDA/ACCESS    ###
 ##                                                                          ###
 ###############################################################################
 
@@ -11,45 +11,35 @@ require(data.table)
 
 ###   Load Data
 load("Data/WIDA_CO_SGP.Rdata")
-load("Data/WIDA_CO_Data_LONG_2024.Rdata")
-
-##    Fix 2022 data! -- Didn't find this until tech report
-WIDA_CO_SGP@Data[
-    YEAR == 2022, 
-    SCALE_SCORE_PRIOR_STANDARDIZED := SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE
-]
+load("Data/WIDA_CO_Data_LONG_2025.Rdata")
 
 ##    Preserve basic CU/KU variables from previous analyses
 setnames(WIDA_CO_SGP@Data,
          c("CATCH_UP_KEEP_UP_STATUS_3_YEAR",
-           "CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR",
+        #    "CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR",
            "CATCH_UP_KEEP_UP_INTERIM_STATUS"),
-         c("CUKU_ORIG", "CUKU_BASELINE_ORIG", "CUPKUP_IS")
+         c("CUKU_ORIG", "CUPKUP_IS") # , "CUKU_BASELINE_ORIG"
 )
-
-
-###   Add baseline matrices
-SGPstateData <- SGPmatrices::addBaselineMatrices("WIDA_CO", "2021")
 
 ###   Run updateSGP to produce cohort referrenced SGPs, etc.
 WIDA_CO_SGP <-
     updateSGP(
         what_sgp_object = WIDA_CO_SGP,
-        with_sgp_data_LONG = WIDA_CO_Data_LONG_2024,
+        with_sgp_data_LONG = WIDA_CO_Data_LONG_2025,
         steps = c("prepareSGP", "analyzeSGP", "combineSGP", "summarizeSGP"),
         sgp.percentiles = TRUE,
         sgp.projections = TRUE,
         sgp.projections.lagged = TRUE,
-        sgp.percentiles.baseline = TRUE,
-        sgp.projections.baseline = TRUE,
-        sgp.projections.lagged.baseline = TRUE,
+        sgp.percentiles.baseline = FALSE,
+        sgp.projections.baseline = FALSE,
+        sgp.projections.lagged.baseline = FALSE,
         sgp.percentiles.equated = FALSE,
         sgp.target.scale.scores = FALSE,  #  Run below
         save.intermediate.results = FALSE,
         parallel.config = list(
             BACKEND = "PARALLEL",
             WORKERS = list(
-                PERCENTILES = 10, ## & BASELINE_PERCENTILES
+                PERCENTILES = 10,
                 PROJECTIONS = 10,
                 LAGGED_PROJECTIONS = 8
             )
@@ -75,13 +65,13 @@ WIDA_CO_SGP@Data[
 ][, CATCH_UP_KEEP_UP_STATUS_3_YEAR := NULL
 ]
 
-WIDA_CO_SGP@Data[
-    !is.na(CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR),
-    CUKU_BASELINE_ORIG := CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR
-][, CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR := NULL
-]
+# WIDA_CO_SGP@Data[
+#     !is.na(CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR),
+#     CUKU_BASELINE_ORIG := CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR
+# ][, CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR := NULL
+# ]
 
-###  Run combineSGP for Interim Target Levels (for both 2023 and 2024)
+###  Run combineSGP for Interim Target Levels (for both 2024 and 2025)
 `%w/o%` <- function(x, y) x[!x %in% y]
 
 ##    Preserve previously calculated "interim" variables
@@ -89,8 +79,8 @@ WIDA_CO_SGP@Data[
 interim.targets <- c("SGP_TARGET_INTERIM", "SGP_TARGET_INTERIM_CURRENT")
 
 ###   Clean Up pre-combined data
-simple.targets <- c("SGP_TARGET_3_YEAR_CURRENT", "SGP_TARGET_3_YEAR", 
-  "SGP_TARGET_BASELINE_3_YEAR_CURRENT", "SGP_TARGET_BASELINE_3_YEAR")
+simple.targets <- c("SGP_TARGET_3_YEAR_CURRENT", "SGP_TARGET_3_YEAR")#, 
+#   "SGP_TARGET_BASELINE_3_YEAR_CURRENT", "SGP_TARGET_BASELINE_3_YEAR")
 
 WIDA_CO_SGP@Data[, (simple.targets) := NULL]
 
@@ -106,7 +96,7 @@ SGPstateData[["WIDA_CO"]][["Achievement"]][["Levels"]][["Proficient"]] <-
 WIDA_CO_SGP <-
     combineSGP(
         WIDA_CO_SGP,
-        years = "2024",
+        years = "2025",
         sgp.percentiles = FALSE,
         sgp.percentiles.baseline = FALSE,
         sgp.projections.baseline = FALSE,
@@ -141,7 +131,7 @@ for (cuku in grep("CATCH_UP_KEEP_UP", names(WIDA_CO_SGP@Data), value = TRUE)) {
 }
 
 target.ss.index <-
-    grep("2024.*SCALE_SCORES",
+    grep("2025.*SCALE_SCORES",
          names(WIDA_CO_SGP@SGP[["SGProjections"]]), perl = TRUE)
 names(WIDA_CO_SGP@SGP[["SGProjections"]])[target.ss.index] <-
     gsub("SCALE_SCORES", "SS_L1L2", 
@@ -156,7 +146,7 @@ SGPstateData[["WIDA_CO"]][["Achievement"]][["Levels"]][["Proficient"]] <-
 WIDA_CO_SGP <-
     combineSGP(
         WIDA_CO_SGP,
-        years = "2024",
+        years = "2025",
         sgp.percentiles.baseline=FALSE,
         sgp.projections.baseline = FALSE,
         sgp.projections.lagged.baseline = FALSE,
@@ -190,7 +180,7 @@ for (cuku in grep("CATCH_UP_KEEP_UP", names(WIDA_CO_SGP@Data), value = TRUE)) {
 }
 
 target.ss.index <-
-    grep("2024.*SCALE_SCORES",
+    grep("2025.*SCALE_SCORES",
          names(WIDA_CO_SGP@SGP[["SGProjections"]]), perl = TRUE)
 names(WIDA_CO_SGP@SGP[["SGProjections"]])[target.ss.index] <-
     gsub("SCALE_SCORES", "SS_L2L3",
@@ -205,7 +195,7 @@ SGPstateData[["WIDA_CO"]][["Achievement"]][["Levels"]][["Proficient"]] <-
 WIDA_CO_SGP <-
     combineSGP(
         WIDA_CO_SGP,
-        years = "2024",
+        years = "2025",
         sgp.percentiles.baseline=FALSE,
         sgp.projections.baseline = FALSE,
         sgp.projections.lagged.baseline = FALSE,
@@ -239,7 +229,7 @@ for (cuku in grep("CATCH_UP_KEEP_UP", names(WIDA_CO_SGP@Data), value = TRUE)) {
 }
 
 target.ss.index <-
-    grep("2024.*SCALE_SCORES",
+    grep("2025.*SCALE_SCORES",
          names(WIDA_CO_SGP@SGP[["SGProjections"]]), perl = TRUE)
 names(WIDA_CO_SGP@SGP[["SGProjections"]])[target.ss.index] <-
     gsub("SCALE_SCORES", "SS_L4L5",
@@ -254,7 +244,7 @@ SGPstateData[["WIDA_CO"]][["Achievement"]][["Levels"]][["Proficient"]] <-
 WIDA_CO_SGP <-
     combineSGP(
         WIDA_CO_SGP,
-        years = "2024",
+        years = "2025",
         sgp.percentiles.baseline=FALSE,
         sgp.projections.baseline = FALSE,
         sgp.projections.lagged.baseline = FALSE,
@@ -290,20 +280,19 @@ for (cuku in grep("CATCH_UP_KEEP_UP", names(WIDA_CO_SGP@Data), value = TRUE)) {
 ##   Rename generic "CATCH_UP_KEEP_UP_STATUS" for all students as "Official"
 ##   Also rename Interim Status var(s)
 setnames(WIDA_CO_SGP@Data,
-         c("CUKU_ORIG", "CUKU_BASELINE_ORIG", "CUPKUP_IS"),
+         c("CUKU_ORIG", "CUPKUP_IS"), # , "CUKU_BASELINE_ORIG"
          c("CATCH_UP_KEEP_UP_STATUS_3_YEAR",
-           "CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR",
+        #    "CATCH_UP_KEEP_UP_STATUS_BASELINE_3_YEAR",
            "CATCH_UP_KEEP_UP_INTERIM_STATUS")
 )
 
 #' ### Conduct SGP analyses
 #'
-#' Although Colorado currently uses cohort-referenced SGPs as the official
-#' student-level English language proficiency growth metric, baseline-referenced
-#' SGPs were also calculated. All SGPs were calculated concurrently using the
-#' [`R` Software Environment](http://www.r-project.org) in conjunction with the
-#' [`SGP` package](http://sgp.io). Broadly, the Colorado ACCESS for ELLs
-#' analyses were completed in five steps.
+#' Colorado uses cohort-referenced SGPs as the official student-level
+#' English language proficiency growth metric. All SGPs were calculated
+#' concurrently using the [`R` Software Environment](http://www.r-project.org)
+#' in conjunction with the [`SGP` package](http://sgp.io). Broadly, the
+#' Colorado ACCESS for ELLs analyses were completed in five steps.
 #'
 #' 1. `prepareSGP`
 #' 2. `analyzeSGP`
@@ -340,7 +329,7 @@ setnames(WIDA_CO_SGP@Data,
 #'
 #' #### Custom *On-Track to Standard* growth
 #' 
-#' The 2024 Colorado ACCESS for ELLs SGP results data were used in subsequent
+#' The 2025 Colorado ACCESS for ELLs SGP results data were used in subsequent
 #' growth to standard and adequate growth analyses. As part of these analyses,
 #' The Center for Assessment calculated additional growth trajectory and target
 #' metrics that CDE requires to monitor "On-Track to Standard" status given each
@@ -358,8 +347,8 @@ source(
         package = "cfaDocs"
     )
 )
-WIDA_CO_SGP@Version$session_platform <- list("2024" = session_platform)
-WIDA_CO_SGP@Version$attached_pkgs    <- list("2024" = attached_pkgs)
-WIDA_CO_SGP@Version$namespace_pkgs   <- list("2024" = namespace_pkgs)
+WIDA_CO_SGP@Version$session_platform <- list("2025" = session_platform)
+WIDA_CO_SGP@Version$attached_pkgs    <- list("2025" = attached_pkgs)
+WIDA_CO_SGP@Version$namespace_pkgs   <- list("2025" = namespace_pkgs)
 
 save(WIDA_CO_SGP, file = "Data/WIDA_CO_SGP.Rdata")
